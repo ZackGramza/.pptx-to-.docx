@@ -27,21 +27,20 @@ def convert_pptx_to_docx(input_pptx, output_docx):
     doc = Document()
 
     for slide_number, slide in enumerate(presentation.slides):
-        # Insert heading for each slide
+      
         heading = f"Slide {slide_number + 1}"
         doc.add_heading(heading, level=1).alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
-        # Extract text
+       
         text = '\n'.join(extract_text_from_shape(shape) for shape in slide.shapes)
         doc.add_paragraph(text, style='BodyText')
 
-        # Extract and insert images
+        
         extract_images_from_slide(slide, doc)
 
-    # Save the Word document
+    
     doc.save(output_docx)
-
-# Example usage
+#usage of code
 input_pptx = r''
 output_docx = r''
 
